@@ -16,18 +16,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[QML学习之路]]></title>
-    <url>%2Fblog%2F2017%2F12%2F12%2Fqml%2F</url>
-    <content type="text"><![CDATA[qml的基本元素item image qml的布局anchor layout]]></content>
-      <categories>
-        <category>QML</category>
-      </categories>
-      <tags>
-        <tag>Qt</tag>
-        <tag>qml</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[宏开关]]></title>
     <url>%2Fblog%2F2017%2F12%2F12%2F%E5%AE%8F%E5%BC%80%E5%85%B3%2F</url>
     <content type="text"><![CDATA[宏替换是在预处理时进行的 宏头文件test.h123456789101112131415161718#ifndef TEST_H#define TEST_H#include &lt;QDebug&gt;#ifdef TEST_DEBUG_ON#define LOG_PRINTF &#123;qDebug()&lt;&lt;"test"&lt;&lt;__FILE__&lt;&lt;__FUNCTION__&lt;&lt;__LINE__;&#125;#define swap(x, y)\x = x + y;\y = x - y;\x = x - y;#else#define LOG_PRINTF#define swap(x,y)#endif#endif 使用宏处12345678#include "test.h"#define TEST_DEBUG_ONvoid fun()&#123; LOG_PRINTF&#125; 不使用LOG_PRINTF时，注释#define TEST_DEBUG_ON 头文件多次包含问题c/c++ 头文件多次包含,会出现重复定义的问题。避免头文件多次包含的方式 使用宏保护1234#ifndef TEST_H#define TEST_H#endif 测试 TEST_H 预处理器变量是否未定义。如果 SALESITEM_H 未定义，那么 #ifndef 测试成功，跟在#ifndef 后面的所有行都被执行，直到发现 #endif。相反，如果 TEST_H 已定义，那么 #ifndef 指示测试为假，该指示和 #endif 指示间的代码都被忽略。 使用 #pragma once c++中#pragma once是编译器相关的，有的编译器支持，有的编译器不支持，具体情况请查看编译器API文档。]]></content>
@@ -48,6 +36,18 @@
       <tags>
         <tag>Qt</tag>
         <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[QML学习之路]]></title>
+    <url>%2Fblog%2F2017%2F12%2F12%2Fqml%2F</url>
+    <content type="text"><![CDATA[qml的基本元素item image qml的布局anchor layout]]></content>
+      <categories>
+        <category>QML</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+        <tag>qml</tag>
       </tags>
   </entry>
   <entry>
@@ -98,7 +98,7 @@
   <entry>
     <title><![CDATA[多态]]></title>
     <url>%2Fblog%2F2017%2F12%2F10%2F%E5%A4%9A%E6%80%81%2F</url>
-    <content type="text"><![CDATA[静态多态在编译时实现多态 动态多态在运行时实现多态]]></content>
+    <content type="text"><![CDATA[多态的条件 必须存在继承关系 继承关系必须有同名虚函数 存在基类类型的指针或者引用，通过该指针或引用调用虚函数。 虚函数声明 纯虚函数声明如下： virtual void funtion()=0 纯虚函数一定没有定义，纯虚函数用来规范派生类的行为，即接口。包含纯虚函数的类是抽象类，抽象类不能定义实例，但可以声明指向实现该抽象类的具体类的指针或引用。 虚函数声明如下：virtual ReturnType FunctionName(Parameter) 虚函数必须实现。 不建议用父类指针指向子类，尤其是父类析构函数没有声明为虚函数，采用父类指针，其生存周期结束时会自动调用父类的析构函数，而不会调用子类析构函数，子类未完全析构，造成内存泄漏。 实现多态父类析构函数定义为虚函数 构造函数顺序：先执行父类的构造函数，再执行子类的构造函数 析构函数顺序：先执行子类的析构函数，再执行父类的析构函数 父类析构函数没有定义为virtual时12345678910111213141516class mParent&#123;public: mParent() &#123; cout &lt;&lt; "p gouzhao" &lt;&lt; endl; &#125; ~mParent() &#123; cout &lt;&lt; "p xigou" &lt;&lt; endl; &#125; virtual void print() &#123; cout &lt;&lt; "this is parent" &lt;&lt; endl; &#125;&#125;; 子类A123456789101112131415161718class A : public mParent&#123;public: A() &#123; cout &lt;&lt; "A gouxhao" &lt;&lt; endl; &#125; ~A() &#123; cout &lt;&lt; "A xigou" &lt;&lt; endl; &#125; virtual void print() &#123; cout &lt;&lt; "this is A" &lt;&lt; endl; &#125;&#125;; 使用多态123parent * p = new A;p-&gt;F();delete p; 结果是：此时delete p 没有使用子类A的析构函数，如果A里有裸指针，则会造成内存泄漏 父类析构函数定义为virtual时12345678910111213141516class mParent&#123;public: mParent() &#123; cout &lt;&lt; "p gouzhao" &lt;&lt; endl; &#125; virtual ~mParent() &#123; cout &lt;&lt; "p xigou" &lt;&lt; endl; &#125; virtual void print() &#123; cout &lt;&lt; "this is parent" &lt;&lt; endl; &#125;&#125;; 结果是：此时delete p 使用子类A的析构函数，如果A里有裸指针，则会造成内存泄漏 静态多态在编译时实现多态 动态多态在运行时实现多态]]></content>
       <categories>
         <category>C++</category>
       </categories>
@@ -155,7 +155,7 @@
   <entry>
     <title><![CDATA[一些网站]]></title>
     <url>%2Fblog%2F2017%2F12%2F03%2F%E7%BD%91%E5%9D%80%2F</url>
-    <content type="text"><![CDATA[word格式转markdowm 在线转换word to markdowm Qt下载Qt download rgb转16进制 颜色代码转换RGB RGB和HSV的转换RGB to HSV]]></content>
+    <content type="text"><![CDATA[word格式转markdowm 在线转换word to markdowm Qt下载Qt download rgb转16进制 颜色代码转换RGB RGB和HSV的转换RGB to HSV w3school C++入门]]></content>
       <categories>
         <category>收藏网址</category>
       </categories>
