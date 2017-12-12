@@ -27,10 +27,10 @@
     <url>%2Fblog%2F2017%2F12%2F11%2Fcode%2F</url>
     <content type="text"><![CDATA[1234567int a[10] = &#123;2,3,4,5&#125;;int i = 3; bool ok = (a[i] == i[a]);//ok == true/*a[i] == *(a+i) == *(i+a) == i[a]*/]]></content>
       <categories>
-        <category>c</category>
+        <category>C</category>
       </categories>
       <tags>
-        <tag>c</tag>
+        <tag>C</tag>
       </tags>
   </entry>
   <entry>
@@ -49,14 +49,14 @@
     <content type="text"><![CDATA[静态多态在编译时实现多态 动态多态在运行时实现多态]]></content>
   </entry>
   <entry>
-    <title><![CDATA[QML学习之路]]></title>
-    <url>%2Fblog%2F2017%2F12%2F11%2Fqml%2F</url>
-    <content type="text"><![CDATA[qml的基本元素item image qml的布局anchor layout]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[Qt之元系统]]></title>
     <url>%2Fblog%2F2017%2F12%2F11%2FQt%E5%85%83%E7%B3%BB%E7%BB%9F%2F</url>
     <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[QML学习之路]]></title>
+    <url>%2Fblog%2F2017%2F12%2F11%2Fqml%2F</url>
+    <content type="text"><![CDATA[qml的基本元素item image qml的布局anchor layout]]></content>
   </entry>
   <entry>
     <title><![CDATA[Qt event loop]]></title>
@@ -81,17 +81,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[向上转型]]></title>
-    <url>%2Fblog%2F2017%2F12%2F03%2F%E5%90%91%E4%B8%8A%E8%BD%AC%E5%9E%8B%2F</url>
-    <content type="text"><![CDATA[父类 转子类]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[文章属性]]></title>
     <url>%2Fblog%2F2017%2F12%2F03%2F%E6%96%87%E7%AB%A0%E5%B1%9E%E6%80%A7%2F</url>
     <content type="text"><![CDATA[属性文章可以拥有如下属性： 属性 说明 title 文章的标题 date 创建日期 文件的创建日期 updated 修改日期 文件的修改日期 comments 是否开启评论 true tags 标签 categories 分类 permalink url中的名字 文件名 Markdown插入本地图片虽然在官方语法中，Markdown插入图片的格式是这样的：1![Alt text](/path/to/img.jpg) 然而，如果你用了Hexo框架，那你得小心了。 为什么要用Hexo，Octopress之类的框架呢？无非是为了让页面更加丰富多彩，以及让操作更加简便。这些用jeklly直接来做是十分繁琐，费时的。 好了，回归正题。首先，你不可能在网页里用绝对路径，这样怎么部署到服务器上呢？所以必定是相对路径。Markdown本来的语法中，只要img和md文件的相对路径是对的就行，然而Hexo不知道对路径做了什么处理，你需要在source文件夹中新建一个images文件夹，然后把图片放在images文件夹里。路径也必须是这样的：1![Alt text](../images/img.jpg)]]></content>
@@ -101,6 +90,17 @@
       <tags>
         <tag>Hexo</tag>
         <tag>文章属性</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[向上转型]]></title>
+    <url>%2Fblog%2F2017%2F12%2F03%2F%E5%90%91%E4%B8%8A%E8%BD%AC%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[父类 转子类]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
