@@ -88,41 +88,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[宏开关]]></title>
-      <url>/blog/2017/12/12/%E5%AE%8F%E5%BC%80%E5%85%B3/</url>
-      <content type="html"><![CDATA[<font color="#00bfff" size="6" face="黑体">宏替换是在预处理时进行的</font>
-
-<h1 id="宏头文件"><a href="#宏头文件" class="headerlink" title="宏头文件"></a>宏头文件</h1><h2 id="test-h"><a href="#test-h" class="headerlink" title="test.h"></a>test.h</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> TEST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> TEST_DEBUG_ON</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOG_PRINTF &#123;qDebug()&lt;&lt;<span class="meta-string">"test"</span>&lt;&lt;__FILE__&lt;&lt;__FUNCTION__&lt;&lt;__LINE__;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> swap(x, y)\</span></span><br><span class="line">x = x + y;\</span><br><span class="line">y = x - y;\</span><br><span class="line">x = x - y;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOG_PRINTF</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> swap(x,y)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="使用宏处"><a href="#使用宏处" class="headerlink" title="使用宏处"></a>使用宏处</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"test.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST_DEBUG_ON</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  LOG_PRINTF</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>不使用LOG_PRINTF时，注释<code>#define TEST_DEBUG_ON</code></p>
-<h1 id="头文件多次包含问题"><a href="#头文件多次包含问题" class="headerlink" title="头文件多次包含问题"></a>头文件多次包含问题</h1><p>c/c++ 头文件多次包含,会出现重复定义的问题。<br>避免头文件多次包含的方式</p>
-<ul>
-<li>使用宏保护<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> TEST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>测试 TEST_H 预处理器变量是否未定义。如果 SALESITEM_H 未定义，那么 #ifndef 测试成功，跟在#ifndef 后面的所有行都被执行，直到发现 #endif。相反，如果 TEST_H 已定义，那么 #ifndef 指示测试为假，该指示和 #endif 指示间的代码都被忽略。</p>
-<ul>
-<li>使用 <code>#pragma once</code></li>
-</ul>
-<p>c++中<code>#pragma once</code>是编译器相关的，有的编译器支持，有的编译器不支持，具体情况请查看编译器API文档。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> C++ </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> C++ </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Qt之元系统]]></title>
       <url>/blog/2017/12/12/Qt%E5%85%83%E7%B3%BB%E7%BB%9F/</url>
       <content type="html"></content>
@@ -163,6 +128,41 @@
             <tag> Qt </tag>
             
             <tag> qml </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[宏开关]]></title>
+      <url>/blog/2017/12/12/%E5%AE%8F%E5%BC%80%E5%85%B3/</url>
+      <content type="html"><![CDATA[<font color="#00bfff" size="6" face="黑体">宏替换是在预处理时进行的</font>
+
+<h1 id="宏头文件"><a href="#宏头文件" class="headerlink" title="宏头文件"></a>宏头文件</h1><h2 id="test-h"><a href="#test-h" class="headerlink" title="test.h"></a>test.h</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> TEST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> TEST_DEBUG_ON</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOG_PRINTF &#123;qDebug()&lt;&lt;<span class="meta-string">"test"</span>&lt;&lt;__FILE__&lt;&lt;__FUNCTION__&lt;&lt;__LINE__;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> swap(x, y)\</span></span><br><span class="line">x = x + y;\</span><br><span class="line">y = x - y;\</span><br><span class="line">x = x - y;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOG_PRINTF</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> swap(x,y)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="使用宏处"><a href="#使用宏处" class="headerlink" title="使用宏处"></a>使用宏处</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"test.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST_DEBUG_ON</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  LOG_PRINTF</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不使用LOG_PRINTF时，注释<code>#define TEST_DEBUG_ON</code></p>
+<h1 id="头文件多次包含问题"><a href="#头文件多次包含问题" class="headerlink" title="头文件多次包含问题"></a>头文件多次包含问题</h1><p>c/c++ 头文件多次包含,会出现重复定义的问题。<br>避免头文件多次包含的方式</p>
+<ul>
+<li>使用宏保护<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> TEST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>测试 TEST_H 预处理器变量是否未定义。如果 SALESITEM_H 未定义，那么 #ifndef 测试成功，跟在#ifndef 后面的所有行都被执行，直到发现 #endif。相反，如果 TEST_H 已定义，那么 #ifndef 指示测试为假，该指示和 #endif 指示间的代码都被忽略。</p>
+<ul>
+<li>使用 <code>#pragma once</code></li>
+</ul>
+<p>c++中<code>#pragma once</code>是编译器相关的，有的编译器支持，有的编译器不支持，具体情况请查看编译器API文档。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> C++ </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> C++ </tag>
             
         </tags>
         
@@ -349,6 +349,26 @@
     </entry>
     
     <entry>
+      <title><![CDATA[向上转型]]></title>
+      <url>/blog/2017/12/03/%E5%90%91%E4%B8%8A%E8%BD%AC%E5%9E%8B/</url>
+      <content type="html"><![CDATA[<h1 id="父类-转子类"><a href="#父类-转子类" class="headerlink" title="父类 转子类"></a>父类 转子类</h1>]]></content>
+      
+        <categories>
+            
+            <category> C++ </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[文章属性]]></title>
       <url>/blog/2017/12/03/%E6%96%87%E7%AB%A0%E5%B1%9E%E6%80%A7/</url>
       <content type="html"><![CDATA[<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><h2 id="文章可以拥有如下属性："><a href="#文章可以拥有如下属性：" class="headerlink" title="文章可以拥有如下属性："></a>文章可以拥有如下属性：</h2><table>
@@ -407,26 +427,6 @@
             <tag> hexo </tag>
             
             <tag> 文章属性 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[向上转型]]></title>
-      <url>/blog/2017/12/03/%E5%90%91%E4%B8%8A%E8%BD%AC%E5%9E%8B/</url>
-      <content type="html"><![CDATA[<h1 id="父类-转子类"><a href="#父类-转子类" class="headerlink" title="父类 转子类"></a>父类 转子类</h1>]]></content>
-      
-        <categories>
-            
-            <category> C++ </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> C++ </tag>
             
         </tags>
         
