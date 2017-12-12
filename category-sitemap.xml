@@ -7,13 +7,6 @@
     </url>
 
     <url>
-        <loc>https://lheartbeat.github.io/blog/categories/C-C/</loc>
-        <lastmod>2017-12-11T02:16:00.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://lheartbeat.github.io/blog/categories/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</loc>
         <lastmod>2017-12-11T02:16:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -49,13 +42,6 @@
     </url>
 
     <url>
-        <loc>https://lheartbeat.github.io/blog/categories/C/</loc>
-        <lastmod>2017-12-12T03:15:08.734Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://lheartbeat.github.io/blog/categories/QML/</loc>
         <lastmod>2017-12-12T03:19:36.775Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -79,6 +65,13 @@
     <url>
         <loc>https://lheartbeat.github.io/blog/categories/github/</loc>
         <lastmod>2017-12-12T03:23:41.499Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://lheartbeat.github.io/blog/categories/C/</loc>
+        <lastmod>2017-12-12T03:30:13.118Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
