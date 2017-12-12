@@ -7,22 +7,15 @@
     </url>
 
     <url>
-        <loc>https://lheartbeat.github.io/blog/categories/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</loc>
+        <loc>https://lheartbeat.github.io/blog/categories/C-C/</loc>
         <lastmod>2017-12-11T02:16:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://lheartbeat.github.io/blog/categories/image/</loc>
-        <lastmod>2017-12-11T07:30:21.656Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://lheartbeat.github.io/blog/categories/github/</loc>
-        <lastmod>2017-12-11T09:28:52.234Z</lastmod>
+        <loc>https://lheartbeat.github.io/blog/categories/%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE/</loc>
+        <lastmod>2017-12-11T02:16:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -58,6 +51,34 @@
     <url>
         <loc>https://lheartbeat.github.io/blog/categories/C/</loc>
         <lastmod>2017-12-12T03:15:08.734Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://lheartbeat.github.io/blog/categories/QML/</loc>
+        <lastmod>2017-12-12T03:19:36.775Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://lheartbeat.github.io/blog/categories/Qt/</loc>
+        <lastmod>2017-12-12T03:20:38.326Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://lheartbeat.github.io/blog/categories/image/</loc>
+        <lastmod>2017-12-12T03:23:35.314Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://lheartbeat.github.io/blog/categories/github/</loc>
+        <lastmod>2017-12-12T03:23:41.499Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
