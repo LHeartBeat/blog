@@ -49,14 +49,14 @@
     <content type="text"><![CDATA[静态多态在编译时实现多态 动态多态在运行时实现多态]]></content>
   </entry>
   <entry>
-    <title><![CDATA[Qt event loop]]></title>
-    <url>%2Fblog%2F2017%2F12%2F11%2FQt%20event%20loop%2F</url>
-    <content type="text"><![CDATA[Qt的事件循环机制函数栈 引用]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[QML学习之路]]></title>
     <url>%2Fblog%2F2017%2F12%2F11%2Fqml%2F</url>
     <content type="text"><![CDATA[qml的基本元素item image qml的布局anchor layout]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Qt event loop]]></title>
+    <url>%2Fblog%2F2017%2F12%2F11%2FQt%20event%20loop%2F</url>
+    <content type="text"><![CDATA[Qt的事件循环机制函数栈 引用]]></content>
   </entry>
   <entry>
     <title><![CDATA[Qt之元系统]]></title>
@@ -134,9 +134,9 @@
         <category>github</category>
       </categories>
       <tags>
+        <tag>github</tag>
         <tag>hexo</tag>
         <tag>blog</tag>
-        <tag>github</tag>
       </tags>
   </entry>
 </search>
