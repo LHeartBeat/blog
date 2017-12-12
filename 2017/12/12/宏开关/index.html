@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="博客笔记">
 <meta property="og:description" content="宏替换是在预处理时进行的  宏头文件test.h123456789101112131415161718#ifndef TEST_H#define TEST_H#include &amp;lt;QDebug&amp;gt;#ifdef TEST_DEBUG_ON#define LOG_PRINTF &amp;#123;qDebug()&amp;lt;&amp;lt;&quot;test&quot;&amp;lt;&amp;lt;__FILE__&amp;lt;&amp;lt;__FUNCT">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-12T02:10:35.008Z">
+<meta property="og:updated_time" content="2017-12-12T02:12:23.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="宏开关">
 <meta name="twitter:description" content="宏替换是在预处理时进行的  宏头文件test.h123456789101112131415161718#ifndef TEST_H#define TEST_H#include &amp;lt;QDebug&amp;gt;#ifdef TEST_DEBUG_ON#define LOG_PRINTF &amp;#123;qDebug()&amp;lt;&amp;lt;&quot;test&quot;&amp;lt;&amp;lt;__FILE__&amp;lt;&amp;lt;__FUNCT">
@@ -397,14 +397,14 @@
 <h2 id="使用宏处"><a href="#使用宏处" class="headerlink" title="使用宏处"></a>使用宏处</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"test.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST_DEBUG_ON</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  LOG_PRINTF</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>不使用LOG_PRINTF时，注释<code>#define TEST_DEBUG_ON</code></p>
 <h1 id="头文件多次包含问题"><a href="#头文件多次包含问题" class="headerlink" title="头文件多次包含问题"></a>头文件多次包含问题</h1><p>c/c++ 头文件多次包含,会出现重复定义的问题。<br>避免头文件多次包含的方式</p>
-<ol>
+<ul>
 <li>使用宏保护<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> TEST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 </li>
-</ol>
+</ul>
 <p>测试 TEST_H 预处理器变量是否未定义。如果 SALESITEM_H 未定义，那么 #ifndef 测试成功，跟在#ifndef 后面的所有行都被执行，直到发现 #endif。相反，如果 TEST_H 已定义，那么 #ifndef 指示测试为假，该指示和 #endif 指示间的代码都被忽略。</p>
-<ol>
+<ul>
 <li>使用 <code>#pragma once</code></li>
-</ol>
+</ul>
 <p>c++中<code>#pragma once</code>是编译器相关的，有的编译器支持，有的编译器不支持，具体情况请查看编译器API文档。</p>
 
       
@@ -538,7 +538,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

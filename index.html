@@ -395,14 +395,14 @@
 <h2 id="使用宏处"><a href="#使用宏处" class="headerlink" title="使用宏处"></a>使用宏处</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"test.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST_DEBUG_ON</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  LOG_PRINTF</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>不使用LOG_PRINTF时，注释<code>#define TEST_DEBUG_ON</code></p>
 <h1 id="头文件多次包含问题"><a href="#头文件多次包含问题" class="headerlink" title="头文件多次包含问题"></a>头文件多次包含问题</h1><p>c/c++ 头文件多次包含,会出现重复定义的问题。<br>避免头文件多次包含的方式</p>
-<ol>
+<ul>
 <li>使用宏保护<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> TEST_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEST_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 </li>
-</ol>
+</ul>
 <p>测试 TEST_H 预处理器变量是否未定义。如果 SALESITEM_H 未定义，那么 #ifndef 测试成功，跟在#ifndef 后面的所有行都被执行，直到发现 #endif。相反，如果 TEST_H 已定义，那么 #ifndef 指示测试为假，该指示和 #endif 指示间的代码都被忽略。</p>
-<ol>
+<ul>
 <li>使用 <code>#pragma once</code></li>
-</ol>
+</ul>
 <p>c++中<code>#pragma once</code>是编译器相关的，有的编译器支持，有的编译器不支持，具体情况请查看编译器API文档。</p>
 
           
@@ -616,7 +616,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/12/11/code/" itemprop="url">代码块</a></h1>
+                <a class="post-title-link" href="/blog/2017/12/11/code/" itemprop="url">code</a></h1>
         
 
         <div class="post-meta">
@@ -651,8 +651,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Hexo教程/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo教程</span>
+                  <a href="/blog/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
                   </a>
                 </span>
 
@@ -689,7 +689,7 @@
 
       
         
-          你對本頁的描述
+          意想不到的C
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/blog/2017/12/11/code/">
@@ -863,7 +863,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lheartbeat.github.io/blog/blog/2017/12/11/向上转型/">
+    <link itemprop="mainEntityOfPage" href="https://lheartbeat.github.io/blog/blog/2017/12/11/智能指针/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Darin">
@@ -882,7 +882,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/12/11/向上转型/" itemprop="url">向上转型</a></h1>
+                <a class="post-title-link" href="/blog/2017/12/11/智能指针/" itemprop="url">智能指针的实现原理</a></h1>
         
 
         <div class="post-meta">
@@ -934,7 +934,7 @@
       
         
           
-            <h1 id="父类-转子类"><a href="#父类-转子类" class="headerlink" title="父类 转子类"></a>父类 转子类</h1>
+            <h1 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h1><h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1>
           
         
       
@@ -1103,125 +1103,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lheartbeat.github.io/blog/blog/2017/12/11/智能指针/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Darin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/cat.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="博客笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2017/12/11/智能指针/" itemprop="url">智能指针的实现原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T11:38:50+08:00">
-                2017-12-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h1><h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://lheartbeat.github.io/blog/blog/2017/12/11/Qt event loop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1296,6 +1177,127 @@
             <h1 id="Qt的事件循环机制"><a href="#Qt的事件循环机制" class="headerlink" title="Qt的事件循环机制"></a>Qt的事件循环机制</h1><pre><code>函数栈
 </code></pre><p><a href="http://mobile.51cto.com/symbian-272812.htm" target="_blank" rel="noopener">引用</a>    </p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lheartbeat.github.io/blog/blog/2017/12/11/qml/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Darin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2017/12/11/qml/" itemprop="url">QML学习之路</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T11:38:50+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="qml的基本元素"><a href="#qml的基本元素" class="headerlink" title="qml的基本元素"></a>qml的基本元素</h1><pre><code>item image
+</code></pre><h1 id="qml的布局"><a href="#qml的布局" class="headerlink" title="qml的布局"></a>qml的布局</h1><pre><code>anchor layout    
+</code></pre>
           
         
       
@@ -1690,7 +1692,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
