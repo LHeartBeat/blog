@@ -34,6 +34,11 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[多态]]></title>
+    <url>%2Fblog%2F2017%2F12%2F11%2F%E5%A4%9A%E6%80%81%2F</url>
+    <content type="text"><![CDATA[静态多态在编译时实现多态 动态多态在运行时实现多态]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[语言特性]]></title>
     <url>%2Fblog%2F2017%2F12%2F11%2F%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7%2F</url>
     <content type="text"><![CDATA[静态语言静态语言实现反射机制动态预压]]></content>
@@ -44,9 +49,14 @@
     <content type="text"><![CDATA[堆栈]]></content>
   </entry>
   <entry>
-    <title><![CDATA[多态]]></title>
-    <url>%2Fblog%2F2017%2F12%2F11%2F%E5%A4%9A%E6%80%81%2F</url>
-    <content type="text"><![CDATA[静态多态在编译时实现多态 动态多态在运行时实现多态]]></content>
+    <title><![CDATA[Qt event loop]]></title>
+    <url>%2Fblog%2F2017%2F12%2F11%2FQt%20event%20loop%2F</url>
+    <content type="text"><![CDATA[Qt的事件循环机制函数栈 引用]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[QML学习之路]]></title>
+    <url>%2Fblog%2F2017%2F12%2F11%2Fqml%2F</url>
+    <content type="text"><![CDATA[qml的基本元素item image qml的布局anchor layout]]></content>
   </entry>
   <entry>
     <title><![CDATA[Qt之元系统]]></title>
@@ -57,16 +67,6 @@
     <title><![CDATA[基于Qt Model/View模型的json修改器]]></title>
     <url>%2Fblog%2F2017%2F12%2F11%2Fjson%E4%BF%AE%E6%94%B9%E5%99%A8%2F</url>
     <content type="text"><![CDATA[整体思路 1)根据Json文件的路径，读取json文件里的Json字符串，再转换成QVariant结构的数据QJsonRoot 2)自定义一个Json树，用于保存Json中的节点 3)把QJsonRoot映射到Json树中，可以对Json树做增删改的操作 4)Model中使用Json，Json树写到Model里的数据结构QModelIndex，Json树便能和Model里的索引联系起来，Model通过TreeView显示出来。用户通过光标获取需要修改的Json树节点的索引，然后修改Json树 5)把已经修改好的Json树，转换成QVariant结构，再保存成Json文件。 图:Json使用Model-View的思路 JsonTree起到连接QVariant和Model里的QModelIndex的作用。实际上QModelIndex能直接关联QVariant数据，但是QModelIndex建立索引时要用到各个节点的父节点和子节点的指针，QVariant没有树的操作，直接关联建立索引有麻烦，所以退而求其次，自定义一个JsonTree用于方便和Model中的索引建立关联。 QVarian功能也很强大，能兼容int ,string ,map等非常多的类型，内部是共用体实现的。重要的是QVariant能保存Json中的节点结构。 1、解析json文件（反序列化） Json文件用于数据保存，数据传输等。Json语法使用[]保存数组，使用{ }保存对象，实际的数据是使用键值方式保存的。 key : value Json文件实际上有层次，可以理解成树形结构，自定义一个树结构QJsonTreeItem用于保存Json节点。 JsonRoot是QVariant的类型,readFileData是QString类型，以下方式把Json文件中的Json文本解析到JsonRoot中 2、写Json文件（序列化） mJson里保存Json数据，类型QVariant，以下方式把QVariant的Json数据写到Json文件里，这里使用了QJson里的Serializer用于Json字串序列化。 3、QVariant数据映射到JsonTree中。 映射函数使用了递归的方式，doc传入的是保存Json的数据，parent是当前节点的父节点，返回的是根节点。 4、JsonTree写到QVariant中。这里也使用到递归的方式。Json序列中数组用List保存，对象使用map保存，键-值（key:value）也使用map保存。 5、JsonTree和QModelIndex关联是通过重写Model中的5个纯虚函数来实现的。 index函数是对JsonTree每一个节点都建立索引，索引的结构是QModelIndex包括该节点的父节点以及在父节点中的行列号。 parent函数是获取索引index的父节点 rowCount函数获取parent的子节点个数 columnCount函数获取每个节点的列数，json是通过key:value显示的，只需要显示key和value两列即可。 data函数是获取当前节点索引为index的key和value，role是该节点显示的方式 6、Model和View的显示和交互 Model通过TreeView显示Json数据。 重写flags函数确定哪些节点是可以修改的 重写setData函数把新的值写入JsonTree中，并且更新对应的索引。 Model -View模型 Model-View是一种设计模式源于MVC（框架？）,一般在构建用户界面时使用。可以自定义一个类封装底层数据Data，设计Data的增删改API。Model实现对数据的操作，起到管理数据的作用。View显示用户感兴趣的数据，delegate用于管理用户不同需求的显示以及管理用户修改的数据。 Model类:自定义的Model都是基于 QAbstractItemModel类,QAbstractItemModel提供的API用以处理以list，table和tree形式的数据。 图 Model基类的继承关系 Json数据是树形结构，控制Json数据的Model直接继承QAbstractItemModel。使用Model时，需要把QJsonTreeItem与Model内部的QModelIndex数据关联起来，此时通过重写五个纯虚函数来实现。 重写函数 flags(const QModelIndex &amp;index) const改变单元格是否修改状态 重写函数 setData(const QModelIndex &amp;index, const QVariant &amp;value, int role)修改点击的单元格 重写虚函数是指定Model与数据项相对应的行号、列号、父项索引index。重写虚函数中需要知道数据的父节点、子节点等信息，树形结构能方便地实现这些需求。 3、Model、View、delegate的通信机制 models,views,delegates之间通过信号，槽机制来进行通讯。从model发出的信号通知view数据源中的数据发生了改变。从view发出的信号提供了有关被显示的数据项与用户交互的信息。从delegate发生的信号被用于在编辑时通知model和view关于当前编辑器的状态信息。 图2 Model-View-Delegate示意图 Model与数据源通信，通信的性质依赖数据源的定义和Model的实现方式； View从Model中获取Model.index，数据的索引；]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Qt event loop]]></title>
-    <url>%2Fblog%2F2017%2F12%2F11%2FQt%20event%20loop%2F</url>
-    <content type="text"><![CDATA[Qt的事件循环机制函数栈 引用]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[QML学习之路]]></title>
-    <url>%2Fblog%2F2017%2F12%2F11%2Fqml%2F</url>
-    <content type="text"><![CDATA[qml的基本元素item image qml的布局anchor layout]]></content>
   </entry>
   <entry>
     <title><![CDATA[编译原理]]></title>
@@ -81,6 +81,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[向上转型]]></title>
+    <url>%2Fblog%2F2017%2F12%2F03%2F%E5%90%91%E4%B8%8A%E8%BD%AC%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[父类 转子类]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[文章属性]]></title>
     <url>%2Fblog%2F2017%2F12%2F03%2F%E6%96%87%E7%AB%A0%E5%B1%9E%E6%80%A7%2F</url>
     <content type="text"><![CDATA[属性文章可以拥有如下属性： 属性 说明 title 文章的标题 date 创建日期 文件的创建日期 updated 修改日期 文件的修改日期 comments 是否开启评论 true tags 标签 categories 分类 permalink url中的名字 文件名 Markdown插入本地图片虽然在官方语法中，Markdown插入图片的格式是这样的：1![Alt text](/path/to/img.jpg) 然而，如果你用了Hexo框架，那你得小心了。 为什么要用Hexo，Octopress之类的框架呢？无非是为了让页面更加丰富多彩，以及让操作更加简便。这些用jeklly直接来做是十分繁琐，费时的。 好了，回归正题。首先，你不可能在网页里用绝对路径，这样怎么部署到服务器上呢？所以必定是相对路径。Markdown本来的语法中，只要img和md文件的相对路径是对的就行，然而Hexo不知道对路径做了什么处理，你需要在source文件夹中新建一个images文件夹，然后把图片放在images文件夹里。路径也必须是这样的：1![Alt text](../images/img.jpg)]]></content>
@@ -90,17 +101,6 @@
       <tags>
         <tag>Hexo</tag>
         <tag>文章属性</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[向上转型]]></title>
-    <url>%2Fblog%2F2017%2F12%2F03%2F%E5%90%91%E4%B8%8A%E8%BD%AC%E5%9E%8B%2F</url>
-    <content type="text"><![CDATA[父类 转子类]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
