@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="qml的基本元素item image qml的布局anchor layout">
+<meta name="description" content="qml简介  QML是一种描述性的脚本语言，文件格式以.qml结尾。语法格式非常像CSS，但又支持javacript形式的编程控制。它结合了QtDesigner UI和QtScript的优点。QtDesigner可以设计出.ui界面文件,但是不支持和Qt原生C++代码的交互。QtScript可以和Qt原生代码进行交互，但是有一个缺点，如果要在脚本中创建一个继承于QObject的图形对象非常不方便，">
 <meta name="keywords" content="Qt,qml">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QML学习之路">
 <meta property="og:url" content="https://lheartbeat.github.io/blog/2017/12/12/qml/index.html">
 <meta property="og:site_name" content="&lt;font color=#F0FFFF size=6 face=&quot;微软雅黑&quot;&gt;天勰的博客&lt;&#x2F;font&gt;">
-<meta property="og:description" content="qml的基本元素item image qml的布局anchor layout">
+<meta property="og:description" content="qml简介  QML是一种描述性的脚本语言，文件格式以.qml结尾。语法格式非常像CSS，但又支持javacript形式的编程控制。它结合了QtDesigner UI和QtScript的优点。QtDesigner可以设计出.ui界面文件,但是不支持和Qt原生C++代码的交互。QtScript可以和Qt原生代码进行交互，但是有一个缺点，如果要在脚本中创建一个继承于QObject的图形对象非常不方便，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-12T03:19:36.775Z">
+<meta property="og:image" content="https://lheartbeat.github.io/blog/2017/12/12/qml/qmlscene.png">
+<meta property="og:image" content="https://lheartbeat.github.io/blog/2017/12/12/qml/zys.png">
+<meta property="og:updated_time" content="2017-12-13T06:36:52.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QML学习之路">
-<meta name="twitter:description" content="qml的基本元素item image qml的布局anchor layout">
+<meta name="twitter:description" content="qml简介  QML是一种描述性的脚本语言，文件格式以.qml结尾。语法格式非常像CSS，但又支持javacript形式的编程控制。它结合了QtDesigner UI和QtScript的优点。QtDesigner可以设计出.ui界面文件,但是不支持和Qt原生C++代码的交互。QtScript可以和Qt原生代码进行交互，但是有一个缺点，如果要在脚本中创建一个继承于QObject的图形对象非常不方便，">
+<meta name="twitter:image" content="https://lheartbeat.github.io/blog/2017/12/12/qml/qmlscene.png">
 
 
 
@@ -391,9 +394,27 @@
       
 
       
-        <h1 id="qml的基本元素"><a href="#qml的基本元素" class="headerlink" title="qml的基本元素"></a>qml的基本元素</h1><pre><code>item image
-</code></pre><h1 id="qml的布局"><a href="#qml的布局" class="headerlink" title="qml的布局"></a>qml的布局</h1><pre><code>anchor layout    
-</code></pre>
+        <h1 id="qml简介"><a href="#qml简介" class="headerlink" title="qml简介"></a>qml简介</h1><p>  <code>QML</code>是一种描述性的脚本语言，文件格式以<code>.qml</code>结尾。语法格式非常像<code>CSS</code>，但又支持<code>javacript</code>形式的编程控制。它结合了<code>QtDesigner UI</code>和<code>QtScript</code>的优点。<code>QtDesigner</code>可以设计出<code>.ui</code>界面文件,但是不支持和Qt原生C++代码的交互。<code>QtScript</code>可以和<code>Qt</code>原生代码进行交互，但是有一个缺点，如果要在脚本中创建一个继承于<code>QObject</code>的图形对象非常不方便，只能在<code>Qt</code>代码中创建图形对象，然后从 <code>QtScript</code>中进行访问。而<code>QML</code>可以在脚本里创建图形对象，并且支持各种图形特效，以及状态机等，同时又能跟<code>Qt</code>写的<code>C++</code>代码进行方便的交互，使用起来非常方便。</p>
+<p>可以使用Qt自带的工具<code>qmlscene.exe</code> 直接运行qml文件查看qml界面效果<br><img src="/blog/2017/12/12/qml/qmlscene.png" alt="ff"></p>
+<h1 id="qml的基本元素"><a href="#qml的基本元素" class="headerlink" title="qml的基本元素"></a>qml的基本元素</h1><ul>
+<li>item</li>
+<li><p>window<br>导入<code>import QtQuick.Window 2.2</code>模块，2.2是Qt模块的版本号</p>
+</li>
+<li><p>image</p>
+</li>
+<li><p>菜单</p>
+<h2 id="注释符和C-一样"><a href="#注释符和C-一样" class="headerlink" title="注释符和C++一样"></a>注释符和C++一样</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> /* 这是一个多行注释</span><br><span class="line"> 和c语言的一样 */</span><br><span class="line"></span><br><span class="line">// 一个单行注释</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="qml的布局"><a href="#qml的布局" class="headerlink" title="qml的布局"></a>qml的布局</h1><p>要使用QML进行界面的布局，首先需要理解QML元素的层次结构。QML的层次结构很简单，是一个树形结构，最外层必须有一个根元素，根元素里面可以嵌套一个或多个子元素，子元素里面还可以包含子元素。如果用图形画出来的话大概是这个样子。<br> <img src="/blog/2017/12/12/qml/zys.png" alt="结构图"></p>
+<pre><code>anchor layout    
+</code></pre><h1 id="qml与C-的交互"><a href="#qml与C-的交互" class="headerlink" title="qml与C++的交互"></a>qml与C++的交互</h1><p><a href="http://doc.qt.io/qt-5/qtqml-cppintegration-topic.html" target="_blank" rel="noopener">官方文档</a></p>
+<p>Qml文档：<br>通过已有元素拼装新的控件元素<br>UI布局 + UI动画 + UI状态和简单逻辑<br>C++ ：<br>Qml文档对应一个controller，一个model（可以不断分层，多个controller 多个model)<br>Qml 里的UI数据通过属性绑定从model获取<br>Qml 里的UI事件通过controller响应</p>
+<h1 id="一些网址"><a href="#一些网址" class="headerlink" title="一些网址"></a>一些网址</h1><p><a href="https://github.com/cwc1987/QmlBook-In-Chinese" target="_blank" rel="noopener">qml中文资料</a></p>
+<p><a href="http://qmlbook.github.io/index.html" target="_blank" rel="noopener">qml英文资料</a></p>
+<p><a href="http://quitcoding.com/download/Qt_Quick_Game_Programming_1_0.pdf" target="_blank" rel="noopener">五子棋</a></p>
+<p><a href="http://blog.csdn.net/foruok/article/details/32698603" target="_blank" rel="noopener">Qt Quick 之 QML 与 C++ 混合编程详解</a></p>
+
       
     </div>
     
@@ -425,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2017/12/12/宏开关/" rel="next" title="宏开关">
-                <i class="fa fa-chevron-left"></i> 宏开关
+              <a href="/blog/2017/12/12/智能指针/" rel="next" title="智能指针的实现原理">
+                <i class="fa fa-chevron-left"></i> 智能指针的实现原理
               </a>
             
           </div>
@@ -435,8 +456,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2017/12/12/Qt元系统/" rel="prev" title="Qt之元系统">
-                Qt之元系统 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2017/12/12/宏开关/" rel="prev" title="宏开关">
+                宏开关 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -575,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#qml的基本元素"><span class="nav-number">1.</span> <span class="nav-text"><a href="#qml&#x7684;&#x57FA;&#x672C;&#x5143;&#x7D20;" class="headerlink" title="qml&#x7684;&#x57FA;&#x672C;&#x5143;&#x7D20;"></a>qml&#x7684;&#x57FA;&#x672C;&#x5143;&#x7D20;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qml的布局"><span class="nav-number">2.</span> <span class="nav-text"><a href="#qml&#x7684;&#x5E03;&#x5C40;" class="headerlink" title="qml&#x7684;&#x5E03;&#x5C40;"></a>qml&#x7684;&#x5E03;&#x5C40;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#qml简介"><span class="nav-number">1.</span> <span class="nav-text"><a href="#qml&#x7B80;&#x4ECB;" class="headerlink" title="qml&#x7B80;&#x4ECB;"></a>qml&#x7B80;&#x4ECB;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qml的基本元素"><span class="nav-number">2.</span> <span class="nav-text"><a href="#qml&#x7684;&#x57FA;&#x672C;&#x5143;&#x7D20;" class="headerlink" title="qml&#x7684;&#x57FA;&#x672C;&#x5143;&#x7D20;"></a>qml&#x7684;&#x57FA;&#x672C;&#x5143;&#x7D20;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注释符和C-一样"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#x6CE8;&#x91CA;&#x7B26;&#x548C;C-&#x4E00;&#x6837;" class="headerlink" title="&#x6CE8;&#x91CA;&#x7B26;&#x548C;C++&#x4E00;&#x6837;"></a>&#x6CE8;&#x91CA;&#x7B26;&#x548C;C++&#x4E00;&#x6837;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qml的布局"><span class="nav-number">3.</span> <span class="nav-text"><a href="#qml&#x7684;&#x5E03;&#x5C40;" class="headerlink" title="qml&#x7684;&#x5E03;&#x5C40;"></a>qml&#x7684;&#x5E03;&#x5C40;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qml与C-的交互"><span class="nav-number">4.</span> <span class="nav-text"><a href="#qml&#x4E0E;C-&#x7684;&#x4EA4;&#x4E92;" class="headerlink" title="qml&#x4E0E;C++&#x7684;&#x4EA4;&#x4E92;"></a>qml&#x4E0E;C++&#x7684;&#x4EA4;&#x4E92;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些网址"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x4E00;&#x4E9B;&#x7F51;&#x5740;" class="headerlink" title="&#x4E00;&#x4E9B;&#x7F51;&#x5740;"></a>&#x4E00;&#x4E9B;&#x7F51;&#x5740;</span></a></li></ol></div>
             
 
           </div>

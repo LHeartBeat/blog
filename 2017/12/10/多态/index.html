@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lheartbeat.github.io/blog/2017/12/10/多态/结果.png">
 <meta property="og:image" content="https://lheartbeat.github.io/blog/2017/12/10/多态/结果1.png">
-<meta property="og:updated_time" content="2017-12-12T09:29:29.640Z">
+<meta property="og:updated_time" content="2017-12-13T00:53:49.284Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多态">
 <meta name="twitter:description" content="多态的条件 必须存在继承关系 继承关系必须有同名虚函数 存在基类类型的指针或者引用，通过该指针或引用调用虚函数。  虚函数声明 纯虚函数声明如下： virtual void funtion()=0 纯虚函数一定没有定义，纯虚函数用来规范派生类的行为，即接口。包含纯虚函数的类是抽象类，抽象类不能定义实例，但可以声明指向实现该抽象类的具体类的指针或引用。 虚函数声明如下：virtual ReturnT">
@@ -421,6 +421,10 @@
 </li>
 </ol>
 <p>结果是：<br><img src="/blog/2017/12/10/多态/结果1.png" alt="jieguo"><br>此时<code>delete p</code> <strong>使用子类A的析构函数</strong>.</p>
+<h1 id="构造函数不能声明为虚函数的原因"><a href="#构造函数不能声明为虚函数的原因" class="headerlink" title="构造函数不能声明为虚函数的原因"></a>构造函数不能声明为虚函数的原因</h1><ol>
+<li>构造一个对象的时候，必须知道对象的实际类型，而虚函数行为是在运行期间确定实际类型的。而在构造一个对象时，由于对象还未构造成功。编译器无法知道对象 的实际类型，是该类本身，还是该类的一个派生类，或是更深层次的派生类,无法确定</li>
+<li>虚函数的执行依赖于虚函数表。而虚函数表在构造函数中进行初始化工作，即初始化vptr，让他指向正确的虚函数表。而在构造对象期间，虚函数表还没有被初 始化，将无法进行。<br><strong><em>虚函数的意思就是开启动态绑定</em></strong>，程序会根据对象的动态类型来选择要调用的方法。然而在构造函数运行的时候，这个对象的动态类型还不完整，没有办法确定它到底是什么类型，故构造函数不能动态绑定。</li>
+</ol>
 <h1 id="静态多态"><a href="#静态多态" class="headerlink" title="静态多态"></a>静态多态</h1><pre><code>在编译时实现多态
 </code></pre><h1 id="动态多态"><a href="#动态多态" class="headerlink" title="动态多态"></a>动态多态</h1><pre><code>在运行时实现多态
 </code></pre>
@@ -603,7 +607,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#多态的条件"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x591A;&#x6001;&#x7684;&#x6761;&#x4EF6;" class="headerlink" title="&#x591A;&#x6001;&#x7684;&#x6761;&#x4EF6;"></a>&#x591A;&#x6001;&#x7684;&#x6761;&#x4EF6;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚函数声明"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x865A;&#x51FD;&#x6570;&#x58F0;&#x660E;" class="headerlink" title="&#x865A;&#x51FD;&#x6570;&#x58F0;&#x660E;"></a>&#x865A;&#x51FD;&#x6570;&#x58F0;&#x660E;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态多态"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x9759;&#x6001;&#x591A;&#x6001;" class="headerlink" title="&#x9759;&#x6001;&#x591A;&#x6001;"></a>&#x9759;&#x6001;&#x591A;&#x6001;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态多态"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x52A8;&#x6001;&#x591A;&#x6001;" class="headerlink" title="&#x52A8;&#x6001;&#x591A;&#x6001;"></a>&#x52A8;&#x6001;&#x591A;&#x6001;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#多态的条件"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x591A;&#x6001;&#x7684;&#x6761;&#x4EF6;" class="headerlink" title="&#x591A;&#x6001;&#x7684;&#x6761;&#x4EF6;"></a>&#x591A;&#x6001;&#x7684;&#x6761;&#x4EF6;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚函数声明"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x865A;&#x51FD;&#x6570;&#x58F0;&#x660E;" class="headerlink" title="&#x865A;&#x51FD;&#x6570;&#x58F0;&#x660E;"></a>&#x865A;&#x51FD;&#x6570;&#x58F0;&#x660E;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造函数不能声明为虚函数的原因"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E0D;&#x80FD;&#x58F0;&#x660E;&#x4E3A;&#x865A;&#x51FD;&#x6570;&#x7684;&#x539F;&#x56E0;" class="headerlink" title="&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E0D;&#x80FD;&#x58F0;&#x660E;&#x4E3A;&#x865A;&#x51FD;&#x6570;&#x7684;&#x539F;&#x56E0;"></a>&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E0D;&#x80FD;&#x58F0;&#x660E;&#x4E3A;&#x865A;&#x51FD;&#x6570;&#x7684;&#x539F;&#x56E0;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态多态"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x9759;&#x6001;&#x591A;&#x6001;" class="headerlink" title="&#x9759;&#x6001;&#x591A;&#x6001;"></a>&#x9759;&#x6001;&#x591A;&#x6001;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态多态"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x52A8;&#x6001;&#x591A;&#x6001;" class="headerlink" title="&#x52A8;&#x6001;&#x591A;&#x6001;"></a>&#x52A8;&#x6001;&#x591A;&#x6001;</span></a></li></ol></div>
             
 
           </div>
