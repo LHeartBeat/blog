@@ -886,19 +886,58 @@
           
             <h1 id="qml简介"><a href="#qml简介" class="headerlink" title="qml简介"></a>qml简介</h1><p>  <code>QML</code>是一种描述性的脚本语言，文件格式以<code>.qml</code>结尾。语法格式非常像<code>CSS</code>，但又支持<code>javacript</code>形式的编程控制。它结合了<code>QtDesigner UI</code>和<code>QtScript</code>的优点。<code>QtDesigner</code>可以设计出<code>.ui</code>界面文件,但是不支持和Qt原生C++代码的交互。<code>QtScript</code>可以和<code>Qt</code>原生代码进行交互，但是有一个缺点，如果要在脚本中创建一个继承于<code>QObject</code>的图形对象非常不方便，只能在<code>Qt</code>代码中创建图形对象，然后从 <code>QtScript</code>中进行访问。而<code>QML</code>可以在脚本里创建图形对象，并且支持各种图形特效，以及状态机等，同时又能跟<code>Qt</code>写的<code>C++</code>代码进行方便的交互，使用起来非常方便。</p>
 <p>可以使用Qt自带的工具<code>qmlscene.exe</code> 直接运行qml文件查看qml界面效果<br><img src="/blog/2017/12/12/qml/qmlscene.png" alt="ff"></p>
-<h1 id="qml的基本元素"><a href="#qml的基本元素" class="headerlink" title="qml的基本元素"></a>qml的基本元素</h1><ul>
-<li>item</li>
-<li><p>window<br>导入<code>import QtQuick.Window 2.2</code>模块，2.2是Qt模块的版本号</p>
+<h1 id="qml的基本元素"><a href="#qml的基本元素" class="headerlink" title="qml的基本元素"></a>qml的基本元素</h1><p>Item（基础元素对象）是所有可视化元素的基础对象，所有其它的可视化元素都继承自Item。它自身不会有任何绘制操作，但是定义了所有可视化元素共有的属性：</p>
+<table>
+<thead>
+<tr>
+<th>分组</th>
+<th>属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Geometry（几何属性）</td>
+<td>x,y（坐标）定义了元素左上角的位置，width，height（长和宽）定义元素的显示范围，z（堆叠次序）定义元素之间的重叠顺序。</td>
+</tr>
+<tr>
+<td>Layout handling（布局操作）</td>
+<td>anchors（锚定），包括左（left），右（right），上（top），下（bottom），水平与垂直居中（vertical center，horizontal center），与margins（间距）一起定义了元素与其它元素之间的位置关系。</td>
+</tr>
+<tr>
+<td>Key handlikng（按键操作）</td>
+<td>附加属性key（按键）和keyNavigation（按键定位）属性来控制按键操作，处理输入焦点（focus）可用操作。</td>
+</tr>
+<tr>
+<td>Transformation（转换）</td>
+<td>缩放（scale）和rotate（旋转）转换，通用的x,y,z属性列表转换（transform），旋转基点设置（transformOrigin）。</td>
+</tr>
+<tr>
+<td>Visual（可视化）</td>
+<td>不透明度（opacity）控制透明度，visible（是否可见）控制元素是否显示，clip（裁剪）用来限制元素边界的绘制，smooth（平滑）用来提高渲染质量。</td>
+</tr>
+<tr>
+<td>State definition（状态定义）</td>
+<td>states（状态列表属性）提供了元素当前所支持的状态列表，当前属性的改变也可以使用transitions（转变）属性列表来定义状态转变动画。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="可以通过Qt-creator的调试状态查看元素的属性"><a href="#可以通过Qt-creator的调试状态查看元素的属性" class="headerlink" title="可以通过Qt creator的调试状态查看元素的属性"></a>可以通过<code>Qt creator</code>的调试状态查看元素的属性</h2><ol>
+<li><p>新建一个qml工程<br>在 <strong>文件</strong>  <strong>新建文件或项目</strong> 对话框中，选择 <strong>其他项目</strong>,然后选择 <strong>Qt Quick UI Prototype</strong><br><img src="/blog/2017/12/12/qml/newpro.png" alt="newproject"><br>例如以下Qml代码的属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> QtQuick <span class="number">2.8</span></span><br><span class="line"><span class="keyword">import</span> QtQuick.Window <span class="number">2.2</span></span><br><span class="line"></span><br><span class="line">Window &#123;</span><br><span class="line">    id: root</span><br><span class="line">    property int blurRadius: <span class="number">0</span></span><br><span class="line">    Image &#123;</span><br><span class="line">        id: pole</span><br><span class="line">        anchors.horizontalCenter: parent.horizontalCenter</span><br><span class="line">        anchors.bottom: parent.bottom</span><br><span class="line">        source: <span class="string">"images/pole.png"</span></span><br><span class="line">    &#125;</span><br><span class="line">    MouseArea &#123;</span><br><span class="line">        anchors.fill: parent</span><br><span class="line">        onPressed: &#123;</span><br><span class="line">            wheel.rotation += <span class="number">90</span></span><br><span class="line">            root.blurRadius = <span class="number">16</span></span><br><span class="line">        &#125;</span><br><span class="line">        onReleased: &#123;</span><br><span class="line">            root.blurRadius = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>image</p>
+<li><p>启动调试<br><img src="/blog/2017/12/12/qml/ts.png" alt="ts"></p>
 </li>
-<li><p>菜单</p>
-<h2 id="注释符和C-一样"><a href="#注释符和C-一样" class="headerlink" title="注释符和C++一样"></a>注释符和C++一样</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> /* 这是一个多行注释</span><br><span class="line"> 和c语言的一样 */</span><br><span class="line"></span><br><span class="line">// 一个单行注释</span><br></pre></td></tr></table></figure>
+<li>属性列表<br><img src="/blog/2017/12/12/qml/sx.png" alt="属性列表"></li>
+<li>image的属性<br><img src="/blog/2017/12/12/qml/imagesx.png" alt="imagesx"></li>
+<li><p>鼠标区域的属性<br><img src="/blog/2017/12/12/qml/msx.png" alt="mouse"></p>
 </li>
-</ul>
+<li><p>qml必须导入 <code>QtQuick</code> ,导入方式<code>import QtQuick 2.8</code><br>使用Qt已有的组件需要导入相应的模块<br>如使用<code>Window</code> 导入<code>import QtQuick.Window 2.2</code>模块，2.2是Qt模块的版本号</p>
+</li>
+</ol>
+<h2 id="qml注释符和C-一样"><a href="#qml注释符和C-一样" class="headerlink" title="qml注释符和C++一样"></a>qml注释符和C++一样</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> /* 这是一个多行注释</span><br><span class="line"> 和c语言的一样 */</span><br><span class="line"></span><br><span class="line">// 一个单行注释</span><br></pre></td></tr></table></figure>
 <h1 id="qml的布局"><a href="#qml的布局" class="headerlink" title="qml的布局"></a>qml的布局</h1><p>要使用QML进行界面的布局，首先需要理解QML元素的层次结构。QML的层次结构很简单，是一个树形结构，最外层必须有一个根元素，根元素里面可以嵌套一个或多个子元素，子元素里面还可以包含子元素。如果用图形画出来的话大概是这个样子。<br> <img src="/blog/2017/12/12/qml/zys.png" alt="结构图"></p>
-<pre><code>anchor layout    
-</code></pre><h1 id="qml与C-的交互"><a href="#qml与C-的交互" class="headerlink" title="qml与C++的交互"></a>qml与C++的交互</h1><p><a href="http://doc.qt.io/qt-5/qtqml-cppintegration-topic.html" target="_blank" rel="noopener">官方文档</a></p>
+<p>使用<code>anchor</code>进行布局    </p>
+<h1 id="qml与C-的交互"><a href="#qml与C-的交互" class="headerlink" title="qml与C++的交互"></a>qml与C++的交互</h1><p><a href="http://doc.qt.io/qt-5/qtqml-cppintegration-topic.html" target="_blank" rel="noopener">官方文档</a></p>
 <p>Qml文档：<br>通过已有元素拼装新的控件元素<br>UI布局 + UI动画 + UI状态和简单逻辑<br>C++ ：<br>Qml文档对应一个controller，一个model（可以不断分层，多个controller 多个model)<br>Qml 里的UI数据通过属性绑定从model获取<br>Qml 里的UI事件通过controller响应</p>
 <h1 id="一些网址"><a href="#一些网址" class="headerlink" title="一些网址"></a>一些网址</h1><p><a href="https://github.com/cwc1987/QmlBook-In-Chinese" target="_blank" rel="noopener">qml中文资料</a></p>
 <p><a href="http://qmlbook.github.io/index.html" target="_blank" rel="noopener">qml英文资料</a></p>
