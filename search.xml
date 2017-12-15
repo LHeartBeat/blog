@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[宏开关]]></title>
-    <url>%2Fblog%2F2017%2F12%2F12%2F%E5%AE%8F%E5%BC%80%E5%85%B3%2F</url>
-    <content type="text"><![CDATA[宏替换是在预处理时进行的 宏头文件test.h123456789101112131415161718#ifndef TEST_H#define TEST_H#include &lt;QDebug&gt;#ifdef TEST_DEBUG_ON#define LOG_PRINTF &#123;qDebug()&lt;&lt;"test"&lt;&lt;__FILE__&lt;&lt;__FUNCTION__&lt;&lt;__LINE__;&#125;#define swap(x, y)\x = x + y;\y = x - y;\x = x - y;#else#define LOG_PRINTF#define swap(x,y)#endif#endif 使用宏处12345678#include "test.h"#define TEST_DEBUG_ONvoid fun()&#123; LOG_PRINTF&#125; 不使用LOG_PRINTF时，注释#define TEST_DEBUG_ON 头文件多次包含问题c/c++ 头文件多次包含,会出现重复定义的问题。避免头文件多次包含的方式 使用宏保护1234#ifndef TEST_H#define TEST_H#endif 测试 TEST_H 预处理器变量是否未定义。如果 SALESITEM_H 未定义，那么 #ifndef 测试成功，跟在#ifndef 后面的所有行都被执行，直到发现 #endif。相反，如果 TEST_H 已定义，那么 #ifndef 指示测试为假，该指示和 #endif 指示间的代码都被忽略。 使用 #pragma once c++中#pragma once是编译器相关的，有的编译器支持，有的编译器不支持，具体情况请查看编译器API文档。]]></content>
+    <title><![CDATA[JIT]]></title>
+    <url>%2Fblog%2F2017%2F12%2F15%2FJIT%2F</url>
+    <content type="text"></content>
       <categories>
+        <category>C</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[字符匹配算法KMP]]></title>
+    <url>%2Fblog%2F2017%2F12%2F15%2F%E5%AD%97%E7%AC%A6%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95KMP%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>C</category>
         <category>C++</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>C</tag>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -21,6 +33,18 @@
       </categories>
       <tags>
         <tag>Qt</tag>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[宏开关]]></title>
+    <url>%2Fblog%2F2017%2F12%2F12%2F%E5%AE%8F%E5%BC%80%E5%85%B3%2F</url>
+    <content type="text"><![CDATA[宏替换是在预处理时进行的 宏头文件test.h123456789101112131415161718#ifndef TEST_H#define TEST_H#include &lt;QDebug&gt;#ifdef TEST_DEBUG_ON#define LOG_PRINTF &#123;qDebug()&lt;&lt;"test"&lt;&lt;__FILE__&lt;&lt;__FUNCTION__&lt;&lt;__LINE__;&#125;#define swap(x, y)\x = x + y;\y = x - y;\x = x - y;#else#define LOG_PRINTF#define swap(x,y)#endif#endif 使用宏处12345678#include "test.h"#define TEST_DEBUG_ONvoid fun()&#123; LOG_PRINTF&#125; 不使用LOG_PRINTF时，注释#define TEST_DEBUG_ON 头文件多次包含问题c/c++ 头文件多次包含,会出现重复定义的问题。避免头文件多次包含的方式 使用宏保护1234#ifndef TEST_H#define TEST_H#endif 测试 TEST_H 预处理器变量是否未定义。如果 SALESITEM_H 未定义，那么 #ifndef 测试成功，跟在#ifndef 后面的所有行都被执行，直到发现 #endif。相反，如果 TEST_H 已定义，那么 #ifndef 指示测试为假，该指示和 #endif 指示间的代码都被忽略。 使用 #pragma once c++中#pragma once是编译器相关的，有的编译器支持，有的编译器不支持，具体情况请查看编译器API文档。]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
         <tag>C++</tag>
       </tags>
   </entry>
