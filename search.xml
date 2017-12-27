@@ -180,7 +180,7 @@
   <entry>
     <title><![CDATA[一些网站]]></title>
     <url>%2Fblog%2F2017%2F12%2F03%2F%E7%BD%91%E5%9D%80%2F</url>
-    <content type="text"><![CDATA[word格式转markdowm 在线转换word to markdowm 格式转换工具Pandoc Qt下载Qt download Qt社区 一些炫酷的demo QUIt coding rgb转16进制 颜色代码转换RGB RGB和HSV的转换RGB to HSV 颜色命名 w3school C++入门]]></content>
+    <content type="text"><![CDATA[word格式转markdowm 在线转换word to markdowm 格式转换工具Pandoc Qt下载Qt download 深入探索QML引擎机制 qml demo game Qt社区 一些炫酷的demo QUIt coding rgb转16进制 颜色代码转换RGB RGB和HSV的转换RGB to HSV 颜色命名 w3school C++入门 -GitHub上整理的一些工具]]></content>
       <categories>
         <category>收藏网址</category>
       </categories>
@@ -208,9 +208,9 @@
         <category>github</category>
       </categories>
       <tags>
-        <tag>github</tag>
         <tag>hexo</tag>
         <tag>blog</tag>
+        <tag>github</tag>
       </tags>
   </entry>
 </search>
